@@ -1,0 +1,220 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  margin: 0;
+}
+
+.App { max-width: 1200px; margin: 0 auto; padding: 20px; }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+header h1 { color: #2c3e50; margin: 0; }
+
+.logout-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+.logout-btn:hover { background: #c0392b; }
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.auth-form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 300px;
+  text-align: center;
+}
+.auth-form h2 { margin-top: 0; }
+.auth-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.auth-form button {
+  width: 100%;
+  padding: 10px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.auth-form button:hover { background: #2980b9; }
+.auth-form p { margin-top: 15px; font-size: 0.9em; }
+.auth-form .error { color: #e74c3c; font-size: 0.9em; }
+
+.anime-form {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.anime-form input, .anime-form select, .anime-form textarea, .anime-form button {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+.anime-form textarea { grid-column: 1 / -1; min-height: 60px; }
+.anime-form button {
+  grid-column: 1 / -1;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+.anime-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.anime-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.anime-card img { width: 100%; height: 300px; object-fit: cover; }
+.anime-card h3 { font-size: 1.2em; padding: 0 15px; margin: 10px 0; }
+.card-info { padding: 0 15px; font-size: 0.9em; color: #555; }
+.card-info p { margin: 5px 0; }
+
+.card-controls { padding: 15px; display: flex; flex-direction: column; gap: 10px; }
+.card-controls select, .card-controls textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.comentarios-edit { font-family: inherit; min-height: 50px; }
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.delete-btn:hover { background-color: #c0392b; }
+.empty-message { text-align: center; font-size: 1.2em; color: #777; }
+.anime-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input[type="file"] {
+  padding: 7px;
+}
+
+/* Para Episodios y Temporadas */
+.form-group.short {
+  max-width: 120px;
+}
+
+/* Para los checkboxes */
+.form-group.check-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group.check-group label {
+  margin-bottom: 0;
+}
+
+.form-group.check-group input[type="checkbox"] {
+  width: auto;
+  height: 18px;
+  width: 18px;
+}
+
+/* Para Comentarios y Botón */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.anime-form button {
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  border: none;
+  padding: 12px;
+}
+.anime-form button:hover {
+  background-color: #2980b9;
+}
+
+/* ESTILOS NUEVOS PARA LA TARJETA */
+
+.card-info p {
+  margin: 6px 0;
+  font-size: 0.95em;
+}
+
+.card-info strong {
+  color: #333;
+}
+
+.card-controls label {
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #555;
+  margin-top: 5px;
+}
+
+.delete-btn {
+  margin-top: 10px;
+}
