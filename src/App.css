@@ -180,12 +180,11 @@ header h1 {
   background-color: #2980b9;
 }
 
-/* --- ESTILOS DE LA LISTA Y TARJETA (ACTUALIZADOS) --- */
 
 .anime-list {
   display: flex;
-  flex-direction: column; /* Pone las tarjetas en columna vertical */
-  align-items: center; /* Centra la columna */
+  flex-direction: column; 
+  align-items: center;
   gap: 20px;
 }
 
@@ -194,19 +193,19 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  display: flex; /* Pone la imagen y el texto en horizontal */
-  width: 650px; /* Ancho de la tarjeta */
+  display: flex; 
+  width: 650px; 
 }
 
 .anime-card img {
-  width: 220px; /* Ancho fijo de la imagen */
+  width: 220px; 
   height: 310px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .anime-card-content {
-  flex-grow: 1; /* El contenido de texto ocupa el resto del espacio */
+  flex-grow: 1;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -235,7 +234,7 @@ header h1 {
 
 .card-controls {
   padding: 0;
-  margin-top: auto; /* Empuja los controles al fondo de la tarjeta */
+  margin-top: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
