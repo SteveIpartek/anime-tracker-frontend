@@ -180,10 +180,9 @@ header h1 {
   background-color: #2980b9;
 }
 
-
 .anime-list {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   gap: 20px;
 }
@@ -193,13 +192,13 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  display: flex; 
-  width: 650px; 
+  display: flex;
+  width: 800px;
 }
 
 .anime-card img {
-  width: 220px; 
-  height: 310px;
+  width: 300px;
+  height: 430px;
   object-fit: cover;
   flex-shrink: 0;
 }
