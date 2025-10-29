@@ -31,17 +31,17 @@ function AnimeForm({ onAddAnime }) {
     const formData = new FormData();
     formData.append('imagen', imagen);
     
-    // Adjunta todos los datos del formulario
+    
     for (const key in data) {
       formData.append(key, data[key]);
     }
-    // Adjunta los valores de los checkboxes (convertidos de booleano a 1 o 0)
+    
     formData.append('ovas', tieneOvas ? 1 : 0);
     formData.append('peliculas', tienePeliculas ? 1 : 0);
 
     onAddAnime(formData);
 
-    // Resetea el formulario
+    
     setData({
       titulo: '', estado: 'Pendiente', episodios: '0', temporadas: '0',
       genero: '', comentarios: ''

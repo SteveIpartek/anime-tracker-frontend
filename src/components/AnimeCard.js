@@ -16,37 +16,43 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
 
   return (
     <div className="anime-card">
-      <img src={`http://localhost:5000/${anime.imagen.replace(/\\/g, '/')}`} alt={anime.titulo} />
-      <h3>{anime.titulo}</h3>
+      <img 
+        src={`http://localhost:5000/${anime.imagen.replace(/\\/g, '/')}`} 
+        alt={anime.titulo} 
+      />
       
-      <div className="card-info">
-        <p><strong>Género:</strong> {anime.genero || 'N/A'}</p>
-        <p><strong>Episodios:</strong> {anime.episodios}</p>
-        <p><strong>Temporadas:</strong> {anime.temporadas}</p>
-        <p><strong>OVAs:</strong> {anime.ovas > 0 ? 'Sí' : 'No'}</p>
-        <p><strong>Películas:</strong> {anime.peliculas > 0 ? 'Sí' : 'No'}</p>
-      </div>
+      <div className="anime-card-content">
+        <h3>{anime.titulo}</h3>
+        
+        <div className="card-info">
+          <p><strong>Género:</strong> {anime.genero || 'N/A'}</p>
+          <p><strong>Episodios:</strong> {anime.episodios}</p>
+          <p><strong>Temporadas:</strong> {anime.temporadas}</p>
+          <p><strong>OVAs:</strong> {anime.ovas > 0 ? 'Sí' : 'No'}</p>
+          <p><strong>Películas:</strong> {anime.peliculas > 0 ? 'Sí' : 'No'}</p>
+        </div>
 
-      <div className="card-controls">
-        <label>Mi Estado:</label>
-        <select value={estado} onChange={handleEstadoChange}>
-          <option value="Pendiente">Pendiente</option>
-          <option value="Viendo">Viendo</option>
-          <option value="Completado">Completado</option>
-        </select>
-        
-        <label>Mis Comentarios:</label>
-        <textarea 
-          className="comentarios-edit"
-          placeholder="Escribe tus notas..."
-          value={comentarios} 
-          onChange={(e) => setComentarios(e.target.value)}
-          onBlur={handleComentariosBlur}
-        ></textarea>
-        
-        <button onClick={() => onDelete(anime._id)} className="delete-btn">
-          Borrar de mi lista
-        </button>
+        <div className="card-controls">
+          <label>Mi Estado:</label>
+          <select value={estado} onChange={handleEstadoChange}>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Viendo">Viendo</option>
+            <option value="Completado">Completado</option>
+          </select>
+          
+          <label>Mis Comentarios:</label>
+          <textarea 
+            className="comentarios-edit"
+            placeholder="Escribe tus notas..."
+            value={comentarios} 
+            onChange={(e) => setComentarios(e.target.value)}
+            onBlur={handleComentariosBlur}
+          ></textarea>
+          
+          <button onClick={() => onDelete(anime._id)} className="delete-btn">
+            Borrar de mi lista
+          </button>
+        </div>
       </div>
     </div>
   );
