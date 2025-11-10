@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function AnimeCard({ anime, onDelete, onUpdate }) {
   const [comentarios, setComentarios] = useState(anime.comentarios);
@@ -7,6 +7,13 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
     temporadaActual: anime.temporadaActual,
     episodioActual: anime.episodioActual
   });
+
+  useEffect(() => {
+    setProgreso({
+      temporadaActual: anime.temporadaActual,
+      episodioActual: anime.episodioActual
+    });
+  }, [anime.temporadaActual, anime.episodioActual]);
 
   const handleEstadoChange = (e) => {
     const newState = e.target.value;
