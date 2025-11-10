@@ -8,7 +8,9 @@ function AnimeForm({ onAddAnime }) {
     temporadas: '0',
     genero: '',
     comentarios: '',
-    puntuacion: '0'
+    puntuacion: '0',
+    temporadaActual: '0',
+    episodioActual: '0'
   });
   const [imagen, setImagen] = useState(null);
   const [tieneOvas, setTieneOvas] = useState(false);
@@ -29,16 +31,22 @@ function AnimeForm({ onAddAnime }) {
       return;
     }
 
-    if (data.estado === 'Viendo' && (parseInt(data.temporadas) <= 0 || parseInt(data.episodios) <= 0)) {
-      alert('Si estás "Viendo" la serie, debes indicar una temporada y episodio válidos (mayores a 0).');
-      return;
+    let finalData = { ...data };
+    if (data.estado !== 'Viendo') {
+      finalData.temporadaActual = '0';
+      finalData.episodioActual = '0';
+    } else {
+      if (parseInt(data.temporadaActual) <= 0 || parseInt(data.episodioActual) <= 0) {
+        alert('Si estás "Viendo" la serie, debes indicar tu progreso actual (Temporada y Episodio > 0).');
+        return;
+      }
     }
     
     const formData = new FormData();
     formData.append('imagen', imagen);
     
-    for (const key in data) {
-      formData.append(key, data[key]);
+    for (const key in finalData) {
+      formData.append(key, finalData[key]);
     }
     formData.append('ovas', tieneOvas ? 1 : 0);
     formData.append('peliculas', tienePeliculas ? 1 : 0);
@@ -47,7 +55,7 @@ function AnimeForm({ onAddAnime }) {
 
     setData({
       titulo: '', estado: 'Pendiente', episodios: '0', temporadas: '0',
-      genero: '', comentarios: '', puntuacion: '0'
+      genero: '', comentarios: '', puntuacion: '0', temporadaActual: '0', episodioActual: '0'
     });
     setTieneOvas(false);
     setTienePeliculas(false);
@@ -81,13 +89,26 @@ function AnimeForm({ onAddAnime }) {
         <input name="genero" type="text" placeholder="Ej: Shonen, Mecha..." value={data.genero} onChange={handleChange} />
       </div>
 
+      {data.estado === 'Viendo' && (
+        <>
+          <div className="form-group short">
+            <label>Temp. Actual</label>
+            <input name="temporadaActual" type="number" min="0" value={data.temporadaActual} onChange={handleChange} />
+          </div>
+          <div className="form-group short">
+            <label>Ep. Actual</label>
+            <input name="episodioActual" type="number" min="0" value={data.episodioActual} onChange={handleChange} />
+          </div>
+        </>
+      )}
+
       <div className="form-group short">
-        <label>Episodios</label>
+        <label>Episodios (Total)</label>
         <input name="episodios" type="number" min="0" value={data.episodios} onChange={handleChange} />
       </div>
 
       <div className="form-group short">
-        <label>Temporadas</label>
+        <label>Temporadas (Total)</label>
         <input name="temporadas" type="number" min="0" value={data.temporadas} onChange={handleChange} />
       </div>
 

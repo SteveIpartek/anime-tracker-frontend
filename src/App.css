@@ -312,3 +312,21 @@ header h1 {
   display: inline-block;
   min-width: 80px;
 }
+
+.card-progress {
+  display: flex;
+  gap: 10px;
+}
+.card-progress div {
+  flex: 1;
+}
+.card-progress label {
+  font-size: 0.8em;
+}
+.card-progress input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}

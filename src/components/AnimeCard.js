@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 function AnimeCard({ anime, onDelete, onUpdate }) {
   const [comentarios, setComentarios] = useState(anime.comentarios);
   const [estado, setEstado] = useState(anime.estado);
+  const [progreso, setProgreso] = useState({
+    temporadaActual: anime.temporadaActual,
+    episodioActual: anime.episodioActual
+  });
 
   const handleEstadoChange = (e) => {
     const newState = e.target.value;
@@ -12,6 +16,14 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
 
   const handleComentariosBlur = () => {
     onUpdate(anime._id, { comentarios: comentarios });
+  };
+
+  const handleProgresoChange = (e) => {
+    setProgreso({ ...progreso, [e.target.name]: e.target.value });
+  };
+
+  const handleProgresoBlur = (e) => {
+    onUpdate(anime._id, { [e.target.name]: e.target.value });
   };
 
   const renderStars = (rating) => {
@@ -60,8 +72,8 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
         <div className="card-info">
           <p><strong>Puntuación:</strong> {renderStars(anime.puntuacion)}</p>
           <p><strong>Género:</strong> {anime.genero || 'N/A'}</p>
-          <p><strong>Episodios:</strong> {anime.episodios}</p>
-          <p><strong>Temporadas:</strong> {anime.temporadas}</p>
+          <p><strong>Episodios (Total):</strong> {anime.episodios}</p>
+          <p><strong>Temporadas (Total):</strong> {anime.temporadas}</p>
           <p><strong>OVAs:</strong> {anime.ovas > 0 ? 'Sí' : 'No'}</p>
           <p><strong>Películas:</strong> {anime.peliculas > 0 ? 'Sí' : 'No'}</p>
         </div>
@@ -73,6 +85,31 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
             <option value="Viendo">Viendo</option>
             <option value="Completado">Completado</option>
           </select>
+          
+          {estado === 'Viendo' && (
+            <div className="card-progress">
+              <div>
+                <label>Mi Temp.</label>
+                <input 
+                  type="number" 
+                  name="temporadaActual" 
+                  value={progreso.temporadaActual} 
+                  onChange={handleProgresoChange}
+                  onBlur={handleProgresoBlur}
+                />
+              </div>
+              <div>
+                <label>Mi Ep.</label>
+                <input 
+                  type="number" 
+                  name="episodioActual"
+                  value={progreso.episodioActual} 
+                  onChange={handleProgresoChange}
+                  onBlur={handleProgresoBlur}
+                />
+              </div>
+            </div>
+          )}
           
           <label>Mis Comentarios:</label>
           <textarea 
