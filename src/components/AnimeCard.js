@@ -22,8 +22,11 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
     setProgreso({ ...progreso, [e.target.name]: e.target.value });
   };
 
-  const handleProgresoBlur = (e) => {
-    onUpdate(anime._id, { [e.target.name]: e.target.value });
+  const handleProgresoSave = () => {
+    onUpdate(anime._id, { 
+      temporadaActual: progreso.temporadaActual, 
+      episodioActual: progreso.episodioActual 
+    });
   };
 
   const renderStars = (rating) => {
@@ -88,26 +91,32 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
           
           {estado === 'Viendo' && (
             <div className="card-progress">
-              <div>
-                <label>Mi Temp.</label>
-                <input 
-                  type="number" 
-                  name="temporadaActual" 
-                  value={progreso.temporadaActual} 
-                  onChange={handleProgresoChange}
-                  onBlur={handleProgresoBlur}
-                />
+              <div className="progress-inputs">
+                <div>
+                  <label>Mi Temp.</label>
+                  <input 
+                    type="number" 
+                    name="temporadaActual" 
+                    value={progreso.temporadaActual} 
+                    onChange={handleProgresoChange}
+                  />
+                </div>
+                <div>
+                  <label>Mi Ep.</label>
+                  <input 
+                    type="number" 
+                    name="episodioActual"
+                    value={progreso.episodioActual} 
+                    onChange={handleProgresoChange}
+                  />
+                </div>
               </div>
-              <div>
-                <label>Mi Ep.</label>
-                <input 
-                  type="number" 
-                  name="episodioActual"
-                  value={progreso.episodioActual} 
-                  onChange={handleProgresoChange}
-                  onBlur={handleProgresoBlur}
-                />
-              </div>
+              <button 
+                onClick={handleProgresoSave} 
+                className="save-progress-btn"
+              >
+                Guardar Progreso
+              </button>
             </div>
           )}
           

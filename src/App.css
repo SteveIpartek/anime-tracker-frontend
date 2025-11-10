@@ -330,3 +330,39 @@ header h1 {
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
+.card-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progress-inputs {
+  display: flex;
+  gap: 10px;
+}
+.progress-inputs div {
+  flex: 1;
+}
+.card-progress label {
+  font-size: 0.8em;
+}
+.card-progress input {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.save-progress-btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 6px;
+  font-size: 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.save-progress-btn:hover {
+  background-color: #27ae60;
+}
