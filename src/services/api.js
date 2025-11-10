@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PROD_API_URL = 'https://https://anime-tracker-backend-1.onrender.com/api';
+const PROD_API_URL = 'https://anime-tracker-backend-1.onrender.com/api';
 const DEV_API_URL = '/api';
 
 const API_URL = process.env.NODE_ENV === 'production' 
