@@ -7,7 +7,8 @@ function AnimeForm({ onAddAnime }) {
     episodios: '0',
     temporadas: '0',
     genero: '',
-    comentarios: ''
+    comentarios: '',
+    puntuacion: '0'
   });
   const [imagen, setImagen] = useState(null);
   const [tieneOvas, setTieneOvas] = useState(false);
@@ -27,24 +28,26 @@ function AnimeForm({ onAddAnime }) {
       alert('Título e imagen son requeridos.');
       return;
     }
+
+    if (data.estado === 'Viendo' && (parseInt(data.temporadas) <= 0 || parseInt(data.episodios) <= 0)) {
+      alert('Si estás "Viendo" la serie, debes indicar una temporada y episodio válidos (mayores a 0).');
+      return;
+    }
     
     const formData = new FormData();
     formData.append('imagen', imagen);
     
-    
     for (const key in data) {
       formData.append(key, data[key]);
     }
-    
     formData.append('ovas', tieneOvas ? 1 : 0);
     formData.append('peliculas', tienePeliculas ? 1 : 0);
 
     onAddAnime(formData);
 
-    
     setData({
       titulo: '', estado: 'Pendiente', episodios: '0', temporadas: '0',
-      genero: '', comentarios: ''
+      genero: '', comentarios: '', puntuacion: '0'
     });
     setTieneOvas(false);
     setTienePeliculas(false);
@@ -80,14 +83,27 @@ function AnimeForm({ onAddAnime }) {
 
       <div className="form-group short">
         <label>Episodios</label>
-        <input name="episodios" type="number" value={data.episodios} onChange={handleChange} />
+        <input name="episodios" type="number" min="0" value={data.episodios} onChange={handleChange} />
       </div>
 
       <div className="form-group short">
         <label>Temporadas</label>
-        <input name="temporadas" type="number" value={data.temporadas} onChange={handleChange} />
+        <input name="temporadas" type="number" min="0" value={data.temporadas} onChange={handleChange} />
       </div>
-      
+
+      <div className="form-group short">
+        <label>Puntuación (0-5)</label>
+        <input 
+          name="puntuacion"
+          type="number" 
+          min="0" 
+          max="5" 
+          step="0.5"
+          value={data.puntuacion} 
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="form-group check-group">
         <label>¿OVAs?</label>
         <input 

@@ -279,3 +279,36 @@ header h1 {
   font-size: 1.2em;
   color: #777;
 }
+
+.stars-filled {
+  color: #f0c040;
+}
+
+.stars-empty {
+  color: #ccc;
+}
+
+.star-half {
+  position: relative;
+  display: inline-block;
+  color: #ccc;
+}
+.star-half .stars-filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #f0c040;
+}
+
+.rating-number {
+  font-size: 0.9em;
+  color: #777;
+  margin-left: 5px;
+}
+
+.card-info p strong {
+  display: inline-block;
+  min-width: 80px;
+}

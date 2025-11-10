@@ -14,6 +14,39 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
     onUpdate(anime._id, { comentarios: comentarios });
   };
 
+  const renderStars = (rating) => {
+    const numRating = parseFloat(rating) || 0;
+    if (numRating === 0) {
+      return <span className="stars-empty">Sin Valorar</span>;
+    }
+
+    let stars = [];
+    const fullStars = Math.floor(numRating);
+    const hasHalfStar = numRating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<span key={`full-${i}`} className="stars-filled">★</span>);
+    }
+    if (hasHalfStar) {
+      stars.push(<span key="half" className="stars-filled">★</span>);
+    }
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<span key={`empty-${i}`} className="stars-empty">☆</span>);
+    }
+    
+    if (hasHalfStar) {
+        stars[stars.length - 1 - emptyStars] = (
+          <span key="half" className="star-half">
+            <span className="stars-filled">★</span>
+            <span className="stars-empty">☆</span>
+          </span>
+        );
+    }
+
+    return <>{stars} <span className="rating-number">({numRating})</span></>;
+  };
+
   return (
     <div className="anime-card">
       <img 
@@ -25,6 +58,7 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
         <h3>{anime.titulo}</h3>
         
         <div className="card-info">
+          <p><strong>Puntuación:</strong> {renderStars(anime.puntuacion)}</p>
           <p><strong>Género:</strong> {anime.genero || 'N/A'}</p>
           <p><strong>Episodios:</strong> {anime.episodios}</p>
           <p><strong>Temporadas:</strong> {anime.temporadas}</p>
