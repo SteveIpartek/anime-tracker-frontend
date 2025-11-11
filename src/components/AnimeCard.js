@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-const PROD_BASE_URL = 'https://anime-tracker-backend-1.onrender.com';
-const DEV_BASE_URL = 'http://localhost:5000';
-
-const BASE_URL = process.env.NODE_ENV === 'production'
-  ? PROD_BASE_URL
-  : DEV_BASE_URL;
-
 function AnimeCard({ anime, onDelete, onUpdate }) {
   const [comentarios, setComentarios] = useState(anime.comentarios);
   const [estado, setEstado] = useState(anime.estado);
@@ -79,7 +72,7 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
   return (
     <div className="anime-card">
       <img 
-        src={`${BASE_URL}/${anime.imagen.replace(/\\/g, '/')}`} 
+        src={anime.imagen} 
         alt={anime.titulo} 
       />
       
