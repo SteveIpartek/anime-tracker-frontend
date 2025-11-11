@@ -67,7 +67,7 @@ function AnimeForm({ onAddAnime }) {
     <form onSubmit={handleSubmit} className="anime-form">
       <div className="form-group">
         <label>Título</label>
-        <input name="titulo" type="text" placeholder="Ej: Cowboy Bebop" value={data.titulo} onChange={handleChange} />
+        <input name="titulo" type="text" placeholder="Ej: One Piece" value={data.titulo} onChange={handleChange} />
       </div>
       
       <div className="form-group">

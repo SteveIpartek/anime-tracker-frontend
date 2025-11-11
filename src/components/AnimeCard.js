@@ -130,7 +130,7 @@ function AnimeCard({ anime, onDelete, onUpdate }) {
           <label>Mis Comentarios:</label>
           <textarea 
             className="comentarios-edit"
-            placeholder="Escribe tus notas..."
+            placeholder="Escribe un comentario..."
             value={comentarios} 
             onChange={(e) => setComentarios(e.target.value)}
             onBlur={handleComentariosBlur}
